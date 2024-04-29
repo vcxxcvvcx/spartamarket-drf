@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     #third-party
     'rest_framework',
     #local
-    'accounts'
-    'products'
+    'accounts',
+    'products',
 ]
 
 MIDDLEWARE = [
