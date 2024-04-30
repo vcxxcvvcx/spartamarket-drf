@@ -24,7 +24,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         user_serializer = UserSerializer(data=user_data)
         if user_serializer.is_valid(raise_exception=True):
             user = user_serializer.save()  
-            profile = Profile.objects.create(user=user, **validated_data)  # 생성된 User 인스턴스를 사용하여 Profile 인스턴스 생성
+            profile = Profile.objects.create(user=user, **validated_data)  
             return profile
         else:
             raise serializers.ValidationError("User data is invalid")

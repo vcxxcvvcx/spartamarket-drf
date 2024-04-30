@@ -11,7 +11,7 @@ from .serializers import ProfileSerializer,UserSerializer
 # @api_view(['POST'])
 # def signup(request):
 #     if request.method == 'POST':
-#         # 회원가입 로직 구현
+#       
 #         return Response({'message': 'Signup successful'})
 #     return Response({'message': 'Method not allowed'}, status=405)
 @api_view(['POST'])
