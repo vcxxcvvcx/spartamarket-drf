@@ -1,29 +1,22 @@
 from django.shortcuts import  get_object_or_404
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view , permission_classes
 from rest_framework.response import Response
 
 from rest_framework import status
-# from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from .models import Product
 from .serializers import ProductSerializer
 from django.urls import reverse
-# from rest_framework.pagination import PageNumberPagination
+
 
 
 # Create your views here.
 
-# class ProductListview(APIView):
-    # permission_classes = [
-    #     IsAuthenticated
-    # ]   ->포스트맨 메소드 get에러 나서 일단 주석 
 @api_view(['GET', "POST"])
-#@permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def product_list(request):
     if request.method == "GET":
         products = Product.objects.all()
-        # paginator = PageNumberPagination()
-        # paginator.page_size = 10  
-        # result_page = paginator.paginate_queryset(products, request)
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
     elif request.method == "POST":
@@ -32,7 +25,7 @@ def product_list(request):
             serializer.save()
             return Response(serializer.data,status=status.HTTP_201_CREATED)
 
-# class ProductDetailview(APIView):
+
     
 @api_view(["GET", "PUT", "DELETE"])
 def product_detail(request, pk):

@@ -1,19 +1,16 @@
+from django.shortcuts import get_object_or_404
+from rest_framework.permissions import IsAuthenticated
 from django.db import transaction
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,permission_classes
 from django.contrib.auth.models import User
 from .models import Profile
 from .serializers import ProfileSerializer,UserSerializer
 
 # Create your views here.
 
-# @api_view(['POST'])
-# def signup(request):
-#     if request.method == 'POST':
-#       
-#         return Response({'message': 'Signup successful'})
-#     return Response({'message': 'Method not allowed'}, status=405)
+
 @api_view(['POST'])
 @transaction.atomic
 def signup(request):
@@ -33,3 +30,13 @@ def signup(request):
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    lookup_field = 'user__username'
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def profile_detail_view(request, username):
+    user = get_object_or_404(User, username=username)
+    profile = get_object_or_404(Profile, user=user)
+    serializer = ProfileSerializer(profile)
+    return Response(serializer.data)

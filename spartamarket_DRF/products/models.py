@@ -10,10 +10,10 @@ class Product(models.Model):
         ("O", "Other"),
     )
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=50)
     price = models.PositiveIntegerField(default=0)
     quantity = models.PositiveIntegerField()
-    category = models.CharField(max_length=1, choices=CATEGORY_CHOICES, default="O")  # 기본값 'Other'
+    category = models.CharField(max_length=1, choices=CATEGORY_CHOICES, default="O")  
 
     def __str__(self):
         return self.name

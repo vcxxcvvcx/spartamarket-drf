@@ -13,11 +13,11 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 class ProfileSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
+    user = UserSerializer() 
 
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = ['user', 'nickname', 'birthday', 'gender', 'bio']
 
     def create(self, validated_data):
         user_data = validated_data.pop('user', {})  
