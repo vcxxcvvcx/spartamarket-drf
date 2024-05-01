@@ -56,4 +56,8 @@ spartamarket DRF는 Django REST Framework 을 사용하여 유저관리와 제�
 
 * 로그인이 안될때는 슈퍼유저 생성후 보기  python manage.py createsuperuser
 
+### TMI
+- 서버상으로는 회원가입되는데 포스트맨에서는 회원가입 send 하면 에러뜸
+- 캡쳐본 올리고 싶은데 어떻게 올리는지 모르겠고 시간도 없음
+
 
