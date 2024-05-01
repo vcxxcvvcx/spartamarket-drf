@@ -13,8 +13,8 @@ spartamarket DRF는 Django REST Framework 을 사용하여 유저관리와 제�
 
 ## API
 ###사용자 및 프로필:
-*회원가입: POST /signup/ - 새로운 사용자를 등록하고 관련 프로필을 생성합니다.
-*로그인: POST /signin/ - 인증을 받고 API 접근을 위한 JWT를 받습니다.
+-회원가입: POST /signup/ - 새로운 사용자를 등록하고 관련 프로필을 생성합니다.
+-로그인: POST /signin/ - 인증을 받고 API 접근을 위한 JWT를 받습니다.
 *프로필 조회: GET /profiles/{username}/ - 사용자 이름을 기준으로 프로필 정보를 검색합니다.
 *[ 
 *회원가입 POST : http://127.0.0.1:8000/api/v1/accounts/profiles/
